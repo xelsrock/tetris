@@ -21,19 +21,17 @@ export class View {
 	preview() {
 		this.container.textContent = '';
 		const preview = document.createElement('div');
-		preview.innerHTML = 'Press "ENTER" <br> to start';
-		preview.style.cssText = `
-			border: 3px solid black;
-			font-size: 18px;
-			text-align: center;
-			padding: 50px;
-			grid-column: 1 / 3;
-		`;
+		preview.classList.add('preview');
 
+		const previewText = document.createElement('h3');
+		previewText.classList.add('preview__text')
+		previewText.textContent = 'Проверь свои силы в тетрисе';
+		
 		const previewBtn = document.createElement('button');
 		previewBtn.classList.add('preview__btn');
 		previewBtn.textContent = 'Начать игру';
-		preview.append(previewBtn);
+
+		preview.append(previewText, previewBtn);
 		this.container.append(preview);
 
 		return previewBtn;

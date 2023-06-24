@@ -74,6 +74,13 @@ export class Controller {
     gameOverText.classList.add('game__over-text');
     gameOverText.textContent = 'Game Over!';
 
+    const gameOverResult = document.createElement('p');
+    gameOverResult.classList.add('game__over-result');
+    gameOverResult.textContent = `${this.game.score >= this.game.record
+      ? `Вы побили прежний рекорд и набрали: ${this.game.score} очков`
+      : `Что-то пошло не так... Всего ${this.game.score} очков`
+    }`;
+
     const resetBtn = document.createElement('button');
     resetBtn.classList.add('game__over-btn');
     resetBtn.textContent = 'На главную';
@@ -83,7 +90,7 @@ export class Controller {
       location.reload();
     });
 
-    gameOver.append(gameOverText, resetBtn);
+    gameOver.append(gameOverText, gameOverResult, resetBtn);
     gameOverMask.append(gameOver);
 
     this.view.container.append(gameOverMask);
