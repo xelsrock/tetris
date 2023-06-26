@@ -10,6 +10,7 @@ export class Game {
 	points = [0, 100, 300, 700, 1500];
 
 	gameOver = false;
+	pause = false;
 
 	area = [
 		['o','o','o','o','o','o','o','o','o','o',],
@@ -186,7 +187,7 @@ export class Game {
 		};
 	};
 
-	createUpdatePanels(showScore, showNextTetramino) {
+	createUpdatePanels(showScore, showNextTetramino, settingPause) {
 		showScore(this.lines, this.score, this.level, this.record);
 		showNextTetramino(this.nextTetramino.block);
 

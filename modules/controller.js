@@ -16,15 +16,31 @@ export class Controller {
   
   start() {
     this.view.showArea(this.game.viewArea);
-    const showScore = this.view.createBlockScore(); 
+    const showScore = this.view.createBlockScore();
+    const settingPause = this.view.createBlockSetting();
     const showNextTetramino = this.view.createBlockNextTetramino();
     this.game.createUpdatePanels(showScore, showNextTetramino);
 
+    settingPause.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      if (this.game.pause) {
+        this.game.pause = false
+        tick();
+      } else {
+        this.game.pause = true;
+      }
+    });
+
     const tick = () => {
       const time = (1100 - 100 * this.game.level);
+
       if (this.game.gameOver) {
         this.gameEnd();
-      
+        return;
+      }
+
+      if (this.game.pause) {
         return;
       }
 
@@ -35,7 +51,10 @@ export class Controller {
       }, time > 100 ? time : 100);
     };
 
-    tick();
+    if (!this.game.pause) {
+      tick();
+    }
+    
 
     // window.addEventListener('touchstart', () => console.log('touch'));
     window.addEventListener('keydown', (event) => {
@@ -76,8 +95,8 @@ export class Controller {
 
     const gameOverResult = document.createElement('p');
     gameOverResult.classList.add('game__over-result');
-    gameOverResult.textContent = `${this.game.score >= this.game.record
-      ? `Вы побили прежний рекорд и набрали: ${this.game.score} очков`
+    gameOverResult.textContent = `${this.game.score > this.game.record
+      ? `Вы побили свой прежний рекорд и набрали: ${this.game.score} очков`
       : `Что-то пошло не так... Всего ${this.game.score} очков`
     }`;
 

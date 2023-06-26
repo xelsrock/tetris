@@ -16,6 +16,7 @@ body {
 	gap: 50px;
 	align-items: flex-start;
 	grid-template-areas: 
+	'game settings'
 	'game next'
 	'game score';
 	width: 500px;
@@ -45,6 +46,18 @@ body {
 
 .preview__text {
 	font-size: 23px;
+}
+
+.setting__block {
+	grid-area: 'settings';
+}
+
+.setting__pause {
+	margin: 0 auto;
+	padding: 10px;
+	cursor: pointer;
+	background-color: inherit;
+	border: none;
 }
 
 .game__over-mask {

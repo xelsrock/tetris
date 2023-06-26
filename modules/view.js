@@ -46,6 +46,31 @@ export class View {
 		this.canvas.height = SIZE_BLOCK * ROWS;
 	};
 
+	createBlockSetting() {
+		const settingBlock = document.createElement('div');
+		settingBlock.classList.add('setting__block');
+
+		const settingPause = document.createElement('button');
+		settingPause.textContent = 'Pause'
+		settingPause.classList.add('setting__pause');
+		settingPause.innerHTML = `
+		<svg width="25px" height="25px" viewBox="-1 0 8 8" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+			<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+					<g id="Dribbble-Light-Preview" transform="translate(-67.000000, -3765.000000)" fill="blue">
+							<g id="icons" transform="translate(56.000000, 160.000000)">
+									<path d="M11,3613 L13,3613 L13,3605 L11,3605 L11,3613 Z M15,3613 L17,3613 L17,3605 L15,3605 L15,3613 Z" id="pause-[#1010]">
+								</path>
+							</g>
+					</g>
+			</g>
+		</svg>`
+
+		settingBlock.append(settingPause);
+		this.container.append(settingBlock);;
+
+		return settingPause;
+	};
+
 	createBlockScore() {
 		const scoreBlock = document.createElement('div');
 		scoreBlock.style.cssText = `
