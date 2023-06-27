@@ -17,9 +17,22 @@ export class Controller {
   start() {
     this.view.showArea(this.game.viewArea);
     const showScore = this.view.createBlockScore();
-    const settingPause = this.view.createBlockSetting();
+    const [settingPause, settingAudio] = this.view.createBlockSetting();
     const showNextTetramino = this.view.createBlockNextTetramino();
     this.game.createUpdatePanels(showScore, showNextTetramino);
+    this.game.musicOn();
+    
+    settingAudio.addEventListener('click', (e) => {
+      e.preventDefault();
+      
+      if (this.game.musicPause) {
+        this.game.musicOn();
+        this.game.musicPause = false;
+      } else {
+        this.game.musicStop();
+        this.game.musicPause = true;
+      }
+    });
 
     settingPause.addEventListener('click', (e) => {
       e.preventDefault();
@@ -83,6 +96,11 @@ export class Controller {
   };
 
   gameEnd() {
+    this.game.musicStop();
+
+    const gameOverMusic = new Audio('audio/gameOver.mp3');
+    gameOverMusic.play();
+      
     const gameOverMask = document.createElement('div');
     gameOverMask.classList.add('game__over-mask');
 

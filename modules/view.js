@@ -51,7 +51,6 @@ export class View {
 		settingBlock.classList.add('setting__block');
 
 		const settingPause = document.createElement('button');
-		settingPause.textContent = 'Pause'
 		settingPause.classList.add('setting__pause');
 		settingPause.innerHTML = `
 		<svg width="25px" height="25px" viewBox="-1 0 8 8" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -63,12 +62,15 @@ export class View {
 							</g>
 					</g>
 			</g>
-		</svg>`
+		</svg>`;
 
-		settingBlock.append(settingPause);
+		const settingAudio = document.createElement('button');
+		settingAudio.textContent = 'Аудио';
+
+		settingBlock.append(settingPause, settingAudio);
 		this.container.append(settingBlock);;
 
-		return settingPause;
+		return [settingPause, settingAudio];
 	};
 
 	createBlockScore() {

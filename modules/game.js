@@ -11,6 +11,7 @@ export class Game {
 
 	gameOver = false;
 	pause = false;
+	musicPause = false;
 
 	area = [
 		['o','o','o','o','o','o','o','o','o','o',],
@@ -38,6 +39,9 @@ export class Game {
 	activeTetramino = this.createTetromine();
 
 	nextTetramino = this.createTetromine();
+
+	headMusic = new Audio('audio/musicTetris.mp3');
+
 
 	createTetromine() {
 		const keys = Object.keys(tetraminoes);
@@ -147,6 +151,18 @@ export class Game {
 		this.calcScore(countRow);
 		this.updatePanels();
 		this.gameOver = !this.checkOutPosition(this.activeTetramino.x, this.activeTetramino.y);
+	};
+
+	musicOn() {
+		if (!this.headMusic.loop) {
+			this.headMusic.loop = 'loop';
+		}
+
+		this.headMusic.play();
+	};
+
+	musicStop() {
+		this.headMusic.pause();
 	};
 
 	clearRow() {
