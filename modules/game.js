@@ -10,8 +10,9 @@ export class Game {
 	points = [0, 100, 300, 700, 1500];
 
 	gameOver = false;
-	pause = false;
+	pauseGame = false;
 	musicPause = false;
+	sound = true;
 
 	area = [
 		['o','o','o','o','o','o','o','o','o','o',],
@@ -40,7 +41,7 @@ export class Game {
 
 	nextTetramino = this.createTetromine();
 
-	headMusic = new Audio('audio/musicTetris.mp3');
+	headMusic = new Audio('audio/headMusic.mp3');
 
 
 	createTetromine() {
@@ -166,6 +167,7 @@ export class Game {
 	};
 
 	clearRow() {
+		const soundClear = new Audio('audio/soundClear.mp3');
 		const rows = [];
 
 		for (let i = ROWS - 1; i >= 0; i-- ) {
@@ -180,6 +182,9 @@ export class Game {
 			if (!countBlock) break;
 
 			if (countBlock === COLLUMNS) {
+				if (this.sound) {
+					soundClear.play();
+				}
 				rows.unshift(i);
 			};
 		};
@@ -203,7 +208,7 @@ export class Game {
 		};
 	};
 
-	createUpdatePanels(showScore, showNextTetramino, settingPause) {
+	createUpdatePanels(showScore, showNextTetramino) {
 		showScore(this.lines, this.score, this.level, this.record);
 		showNextTetramino(this.nextTetramino.block);
 

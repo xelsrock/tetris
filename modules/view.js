@@ -50,27 +50,22 @@ export class View {
 		const settingBlock = document.createElement('div');
 		settingBlock.classList.add('setting__block');
 
-		const settingPause = document.createElement('button');
-		settingPause.classList.add('setting__pause');
-		settingPause.innerHTML = `
-		<svg width="25px" height="25px" viewBox="-1 0 8 8" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-			<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-					<g id="Dribbble-Light-Preview" transform="translate(-67.000000, -3765.000000)" fill="blue">
-							<g id="icons" transform="translate(56.000000, 160.000000)">
-									<path d="M11,3613 L13,3613 L13,3605 L11,3605 L11,3613 Z M15,3613 L17,3613 L17,3605 L15,3605 L15,3613 Z" id="pause-[#1010]">
-								</path>
-							</g>
-					</g>
-			</g>
-		</svg>`;
+		const pauseBtn = document.createElement('button');
+		pauseBtn.classList.add('setting__pause');
+		pauseBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="43" height="43" fill="currentColor" class="bi bi-pause-fill" viewBox="0 0 16 16"> <path d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5zm5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5z"/></svg>';
 
-		const settingAudio = document.createElement('button');
-		settingAudio.textContent = 'Аудио';
+		const musicBtn = document.createElement('button');
+		musicBtn.classList.add('setting__music');
+		musicBtn.innerHTML = `<svg width="40" height="40" fill="currentColor" viewBox="0 0 24 24" id="music-1" data-name="Flat Line" xmlns="http://www.w3.org/2000/svg" class="icon flat-line"><g id="SVGRepo_bgCarrier" stroke-width="0"/><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/><g id="SVGRepo_iconCarrier"><circle id="secondary" cx="9.5" cy="17.5" r="3.5" style="fill: currentColor; stroke-width: 2;"/><path id="primary" d="M13,17.5V3a25.84,25.84,0,0,0,3.44,3c1.66,1.07,1.91,2.76,1.15,5" style="fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"/><circle id="primary-2" data-name="primary" cx="9.5" cy="17.5" r="3.5" style="fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"/></g></svg>`;
 
-		settingBlock.append(settingPause, settingAudio);
-		this.container.append(settingBlock);;
+		const soundBtn = document.createElement('button');
+		soundBtn.classList.add('setting__sound')
+		soundBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-volume-up-fill" viewBox="0 0 16 16"> <path d="M11.536 14.01A8.473 8.473 0 0 0 14.026 8a8.473 8.473 0 0 0-2.49-6.01l-.708.707A7.476 7.476 0 0 1 13.025 8c0 2.071-.84 3.946-2.197 5.303l.708.707z"/> <path d="M10.121 12.596A6.48 6.48 0 0 0 12.025 8a6.48 6.48 0 0 0-1.904-4.596l-.707.707A5.483 5.483 0 0 1 11.025 8a5.483 5.483 0 0 1-1.61 3.89l.706.706z"/> <path d="M8.707 11.182A4.486 4.486 0 0 0 10.025 8a4.486 4.486 0 0 0-1.318-3.182L8 5.525A3.489 3.489 0 0 1 9.025 8 3.49 3.49 0 0 1 8 10.475l.707.707zM6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06z"/> </svg>'
 
-		return [settingPause, settingAudio];
+		settingBlock.append(pauseBtn, musicBtn, soundBtn);
+		this.container.append(settingBlock);
+
+		return [pauseBtn, musicBtn, soundBtn];
 	};
 
 	createBlockScore() {
@@ -143,7 +138,7 @@ export class View {
 	showArea(area) {
 		const context = this.canvas.getContext('2d');
 
-		context.clearRect(0, 0,  this.canvas.width,  this.canvas.height);
+		context.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
 		for (let y = 0; y < area.length; y++) {
 			const line = area[y];

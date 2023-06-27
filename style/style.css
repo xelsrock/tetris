@@ -49,15 +49,24 @@ body {
 }
 
 .setting__block {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-around;
 	grid-area: 'settings';
 }
 
-.setting__pause {
-	margin: 0 auto;
-	padding: 10px;
-	cursor: pointer;
-	background-color: inherit;
+.setting__sound, .setting__music, .setting__pause {
+	padding: 0;
+	display: flex;
 	border: none;
+	color:  lightseagreen;
+	background-color: transparent;
+	cursor: pointer;
+}
+
+.setting__sound:hover, .setting__music:hover, .setting__pause:hover  {
+	color:  rgb(27, 149, 143);
 }
 
 .game__over-mask {
