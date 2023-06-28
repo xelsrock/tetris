@@ -84,8 +84,55 @@ export class Controller {
       tick();
     }
     
+    /* management */
+    const gameArea = document.querySelector('.game-area');
 
-    // window.addEventListener('touchstart', () => console.log('touch'));
+    let touchStart;
+    let touchEnd;
+    
+    // error
+    gameArea.addEventListener('click', (event) => {
+      event.preventDefault();
+      this.game.rotateTetramino();
+      this.view.showArea(this.game.viewArea);
+    });
+
+    gameArea.addEventListener('touchstart', (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      touchStart = event.changedTouches[0];
+    }, false);
+    
+    gameArea.addEventListener('touchend', (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      touchEnd = event.changedTouches[0];
+      let xAbs = Math.abs(touchStart.pageX - touchEnd.pageX);
+      let yAbs = Math.abs(touchStart.pageY - touchEnd.pageY);
+      if (xAbs > 20 || yAbs > 20) {
+        if (xAbs > yAbs) {
+          if (touchEnd.pageX < touchStart.pageX) {
+            /*СВАЙП ВЛЕВО*/
+            this.game.moveLeft();
+            this.view.showArea(this.game.viewArea);
+          } else {
+            /*СВАЙП ВПРАВО*/
+            this.game.moveRight();
+            this.view.showArea(this.game.viewArea);
+          }
+        } else {
+          if (touchEnd.pageY > touchStart.pageY) {
+            /*СВАЙП ВНИЗ*/
+            this.game.moveDown();
+            this.view.showArea(this.game.viewArea);
+          } else {
+            /*СВАЙП ВВЕРХ*/
+          }
+        }
+      }
+    }, false);
+
+
     window.addEventListener('keydown', (event) => {
       const key = event.code;
       event.preventDefault();
