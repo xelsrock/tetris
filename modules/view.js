@@ -116,7 +116,7 @@ export class View {
 		return (tetramino) => {
 			canvas.width = SIZE_BLOCK * tetramino.length; 
 			canvas.height = SIZE_BLOCK * tetramino.length;
-			context.clearRect(0, 0,  canvas.width,  canvas.height);
+			context.clearRect(0, 0, canvas.width, canvas.height);
 
 			for (let y = 0; y < tetramino.length; y++) {
 				const line = tetramino[y];

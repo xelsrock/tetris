@@ -84,18 +84,11 @@ export class Controller {
       tick();
     }
     
-    /* management */
+    /* Management */
     const gameArea = document.querySelector('.game-area');
 
     let touchStart;
     let touchEnd;
-    
-    // error
-    gameArea.addEventListener('click', (event) => {
-      event.preventDefault();
-      this.game.rotateTetramino();
-      this.view.showArea(this.game.viewArea);
-    });
 
     gameArea.addEventListener('touchstart', (event) => {
       event.preventDefault();
@@ -109,52 +102,62 @@ export class Controller {
       touchEnd = event.changedTouches[0];
       let xAbs = Math.abs(touchStart.pageX - touchEnd.pageX);
       let yAbs = Math.abs(touchStart.pageY - touchEnd.pageY);
-      if (xAbs > 20 || yAbs > 20) {
-        if (xAbs > yAbs) {
-          if (touchEnd.pageX < touchStart.pageX) {
-            /*СВАЙП ВЛЕВО*/
-            this.game.moveLeft();
-            this.view.showArea(this.game.viewArea);
+
+      if (!this.game.pauseGame) {
+        if (xAbs === yAbs) {
+          /*Касание*/
+          this.game.rotateTetramino();
+          this.view.showArea(this.game.viewArea);
+        }
+
+        if (xAbs > 20 || yAbs > 20) {
+          if (xAbs > yAbs) {
+            if (touchEnd.pageX < touchStart.pageX) {
+              /*СВАЙП ВЛЕВО*/
+              this.game.moveLeft();
+              this.view.showArea(this.game.viewArea);
+            } else {
+              /*СВАЙП ВПРАВО*/
+              this.game.moveRight();
+              this.view.showArea(this.game.viewArea);
+            }
           } else {
-            /*СВАЙП ВПРАВО*/
-            this.game.moveRight();
-            this.view.showArea(this.game.viewArea);
-          }
-        } else {
-          if (touchEnd.pageY > touchStart.pageY) {
-            /*СВАЙП ВНИЗ*/
-            this.game.moveDown();
-            this.view.showArea(this.game.viewArea);
-          } else {
-            /*СВАЙП ВВЕРХ*/
+            if (touchEnd.pageY > touchStart.pageY) {
+              /*СВАЙП ВНИЗ*/
+              this.game.moveDown();
+              this.view.showArea(this.game.viewArea);
+            } else {
+              /*СВАЙП ВВЕРХ*/
+            }
           }
         }
       }
     }, false);
 
-
     window.addEventListener('keydown', (event) => {
       const key = event.code;
       event.preventDefault();
 
-      switch(key) {
-        case 'ArrowLeft':
-          this.game.moveLeft();
-          this.view.showArea(this.game.viewArea);
-        break;
-        case 'ArrowRight':
-          this.game.moveRight();
-          this.view.showArea(this.game.viewArea);
-        break;
-        case 'ArrowDown':
-          this.game.moveDown();
-          this.view.showArea(this.game.viewArea);
-        break;
-        case 'ArrowUp':
-          this.game.rotateTetramino();
-          this.view.showArea(this.game.viewArea);
-        break;
-      };
+      if (!this.game.pauseGame) {
+        switch(key) {
+          case 'ArrowLeft':
+            this.game.moveLeft();
+            this.view.showArea(this.game.viewArea);
+          break;
+          case 'ArrowRight':
+            this.game.moveRight();
+            this.view.showArea(this.game.viewArea);
+          break;
+          case 'ArrowDown':
+              this.game.moveDown();
+              this.view.showArea(this.game.viewArea);
+          break;
+          case 'ArrowUp':
+              this.game.rotateTetramino();
+              this.view.showArea(this.game.viewArea);
+          break;
+        };
+      } 
     }); 
   };
 
@@ -179,7 +182,7 @@ export class Controller {
 
     const gameOverResult = document.createElement('p');
     gameOverResult.classList.add('game__over-result');
-    gameOverResult.textContent = `${this.game.score > this.game.record
+    gameOverResult.textContent = `${this.game.score >= this.game.record
       ? `Вы побили свой прежний рекорд и набрали: ${this.game.score} очков`
       : `Что-то пошло не так... Всего ${this.game.score} очков`
     }`;

@@ -43,7 +43,6 @@ export class Game {
 
 	headMusic = new Audio('audio/headMusic.mp3');
 
-
 	createTetromine() {
 		const keys = Object.keys(tetraminoes);
 		const letterTetromine = keys[Math.floor(Math.random() * keys.length)];
