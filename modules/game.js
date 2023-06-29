@@ -7,11 +7,11 @@ export class Game {
 	lines = 0;
 	level = 1;
 	record = localStorage.getItem('tetris-record') || 0;
-	points = [0, 100, 300, 700, 1500];
+	points = [0, 100, 300, 600, 1000];
 
 	gameOver = false;
 	pauseGame = false;
-	musicPause = false;
+	musicPause = true;
 	sound = true;
 
 	area = [

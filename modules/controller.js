@@ -20,7 +20,6 @@ export class Controller {
     const [pauseBtn, musicBtn, soundBtn] = this.view.createBlockSetting();
     const showNextTetramino = this.view.createBlockNextTetramino();
     this.game.createUpdatePanels(showScore, showNextTetramino);
-    this.game.musicOn();
     
     musicBtn.addEventListener('click', (e) => {
       e.preventDefault();
@@ -77,7 +76,7 @@ export class Controller {
         this.game.moveDown();
         this.view.showArea(this.game.viewArea);
         tick();
-      }, time > 100 ? time : 100);
+      }, time > 300 ? time : 300);
     };
 
     if (!this.game.pauseGame) {
