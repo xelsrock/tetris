@@ -27,13 +27,59 @@ body {
 }
 
 .game-area {
+	position: relative;
 	border:  2px solid black;
 	display: block;
 	background-color: rgba(222, 222, 222, 0.5);
 	/* animation: blackout linear 3s infinite, twitch linear .1s infinite; */
 }
 
+.info__block {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+	font-size: 18px;
+	position: absolute;
+	left: 10%;
+}
+
+.info__control, .info__game, .info__version {
+	cursor: pointer;
+}
+
+.info__text_control, .info__text_game, .info__text_version {
+	display: none;
+	margin-bottom: 0;
+	margin-left: 10px;
+	font-size: 16px;
+}
+
+.info__text_control {
+	
+}
+
+.info__text_game {
+
+}
+
+.info__text_version {
+
+}
+
+.info__control.active .info__text_control {
+	display: block;
+}
+
+.info__game.active .info__text_game {
+	display: block;
+}
+
+.info__version.active .info__text_version {
+	display: block;
+}
+
 .preview {
+	text-align: center;
 	border: 7px dashed #404040;
 	font-size: 18px;
 	text-align: center;
@@ -42,6 +88,7 @@ body {
 }
 
 .preview__title {
+	text-align: center;
 	margin-top: 0;
 	color: #302d2d;
 	font-size: 20px;

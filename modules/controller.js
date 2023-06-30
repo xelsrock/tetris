@@ -20,6 +20,7 @@ export class Controller {
     const [pauseBtn, musicBtn, soundBtn] = this.view.createBlockSetting();
     const showNextTetramino = this.view.createBlockNextTetramino();
     this.game.createUpdatePanels(showScore, showNextTetramino);
+    this.view.createBlockInfo();
     
     musicBtn.addEventListener('click', (e) => {
       e.preventDefault();

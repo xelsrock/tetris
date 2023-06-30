@@ -24,7 +24,7 @@ export class View {
 		preview.classList.add('preview');
 
 		const previewTitle = document.createElement('h3');
-		previewTitle.classList.add('preview__title')
+		previewTitle.classList.add('preview__title');
 		previewTitle.textContent = 'А что если в классический тетрис добавить немного препятствий?';
 		
 		const previewDescription = document.createElement('ul');
@@ -40,7 +40,7 @@ export class View {
 
 		const previewLiOne = createPreviewLi('Разрушь 10 линий и перейди на новый уровень');
 		const previewLiTwo = createPreviewLi('На каждом уровне после первого есть препятствие');
-		const previewLiThree = createPreviewLi('Попобуй пройти все уровни')
+		const previewLiThree = createPreviewLi('Попробуй пройти все уровни');
 
 		const previewBtn = document.createElement('button');
 		previewBtn.classList.add('preview__btn');
@@ -149,6 +149,65 @@ export class View {
 				};
 			};  
 		};
+	};
+
+	createBlockInfo() {
+		const infoBlock = document.createElement('div');
+		infoBlock.classList.add('info__block')
+
+		const infoControl = document.createElement('a');
+		infoControl.classList.add('info__control');
+		infoControl.textContent = 'Управление';
+
+		const infoGame = document.createElement('a');
+		infoGame.classList.add('info__game');
+		infoGame.textContent = 'О игре';
+
+		const infoVersion = document.createElement('a');
+		infoVersion.classList.add('info__version');
+		infoVersion.textContent = 'История версий';
+
+		const infoControlText = document.createElement('p');
+		infoControlText.classList.add('info__text', 'info__text_control');
+		infoControlText.innerHTML = `
+			<h4>На ПК:</h4>
+			<p>ArrowLeft - влево</p>
+			<p>ArrowRight - вправо</p>
+			<p>ArrowDown - вниз</p>
+			<p>ArrowUp - повернуть</p>
+			<h4>На смартфоне:</h4>
+			<p>Свайп влево - влево</p>
+			<p>Свайп вправо - вправо</p>
+			<p>Свайп вниз - вниз</p>
+			<p>Касание - повернуть</p>
+		`;
+
+		infoControl.addEventListener('click', () => {
+			infoControl.classList.toggle('active');
+		});
+
+		const infoGameText = document.createElement('p');
+		infoGameText.classList.add('info__text', 'info__text_game');
+		infoGameText.textContent = 'hello';
+
+		infoGame.addEventListener('click', () => {
+			infoGame.classList.toggle('active');
+		});
+
+		const infoVersionText = document.createElement('p');
+		infoVersionText.classList.add('info__text', 'info__text_version');
+		infoVersionText.textContent = 'hello';
+
+		infoVersion.addEventListener('click', () => {
+			infoVersion.classList.toggle('active');
+		});
+
+		infoControl.append(infoControlText);
+		infoGame.append(infoGameText);
+		infoVersion.append(infoVersionText);
+
+		infoBlock.append(infoControl, infoGame, infoVersion);
+		this.container.append(infoBlock);
 	};
 
 	showArea(area) {
