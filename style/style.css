@@ -1,13 +1,5 @@
-h1 {
-	text-align: center;
-	margin-bottom: 50px;
-}
-
-span {
-	font-weight: 900;
-}
-
 body {
+	background-color: rgb(229, 218, 195);
 	font-family: sans-serif;
 }
 
@@ -23,29 +15,68 @@ body {
 	margin: 0 auto;
 }
 
+.header__title {
+	color: FireBrick;
+	text-align: center;
+	margin-bottom: 50px;
+	font-weight: 900;
+}
+
+.header__title-online {
+	color: Gold;
+}
+
 .game-area {
 	border:  2px solid black;
 	display: block;
+	background-color: rgba(222, 222, 222, 0.5);
+	/* animation: blackout linear 3s infinite, twitch linear .1s infinite; */
 }
 
 .preview {
-	border: 3px solid black;
+	border: 7px dashed #404040;
 	font-size: 18px;
 	text-align: center;
 	padding: 30px;
 	grid-column: 1 / 3;
 }
 
-.preview__btn {
-	padding: 10px 30px;
-	border-radius: 10px;
-	font-size: 16px;
-	background-color: #fff;
-	cursor: pointer;
+.preview__title {
+	margin-top: 0;
+	color: #302d2d;
+	font-size: 20px;
 }
 
-.preview__text {
-	font-size: 23px;
+.preview__description {
+	margin: 0 auto 20px;
+	padding: 0;
+}
+
+.preview__rules {
+	color: #302d2d;
+	margin-bottom: 8px;
+	font-size: 17px;
+	list-style: none;
+	text-align: start;
+}
+
+.preview__rules:last-child {
+	margin-bottom: 0;
+}
+
+.preview__btn, .game__over-btn {
+	padding: 10px 30px;
+	border-radius: 10px;
+	font-size: 18px;
+	background-color: #ed9595;
+	cursor: pointer;
+	border: 1px solid #333;
+	box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+	transition: background-color .1s linear;
+}
+
+.preview__btn:hover, .game__over-btn:hover {
+	background-color: #dd7777;
 }
 
 .setting__block {
@@ -83,7 +114,7 @@ body {
 	padding: 20px;
 	text-align: center;
   border-radius: 5px;
-  background: #fff;
+  background-color: rgb(229, 218, 195);
   margin: 0 auto;
 	transform: translateY(100px);
 }
@@ -98,9 +129,17 @@ body {
 }
 
 .game__over-btn {
-	padding: 10px 30px;
-	border-radius: 10px;
-	font-size: 16px;
-	background-color: #fff;
-	cursor: pointer;
+
+}
+
+@keyframes blackout {
+	50% {
+		background-color: rgba(158, 154, 154, 1);
+	}
+}
+
+@keyframes twitch {
+	50% {
+		transform: translateX(10px);
+	}
 }

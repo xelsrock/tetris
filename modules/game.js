@@ -42,6 +42,7 @@ export class Game {
 	nextTetramino = this.createTetromine();
 
 	headMusic = new Audio('audio/headMusic.mp3');
+	stopMoveSound = new Audio('audio/stopMove.mp3');
 
 	createTetromine() {
 		const keys = Object.keys(tetraminoes);
@@ -135,6 +136,10 @@ export class Game {
 	};
 
 	stopMove() {
+		if (this.sound) {
+			this.stopMoveSound.play();
+		}
+
 		const {x, y, block: tetramino} = this.activeTetramino;
 
 		for (let i = 0; i < tetramino.length; i++) {

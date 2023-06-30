@@ -23,15 +23,31 @@ export class View {
 		const preview = document.createElement('div');
 		preview.classList.add('preview');
 
-		const previewText = document.createElement('h3');
-		previewText.classList.add('preview__text')
-		previewText.textContent = 'Проверь свои силы в тетрисе';
+		const previewTitle = document.createElement('h3');
+		previewTitle.classList.add('preview__title')
+		previewTitle.textContent = 'А что если в классический тетрис добавить немного препятствий?';
 		
+		const previewDescription = document.createElement('ul');
+		previewDescription.classList.add('preview__description');
+
+		const createPreviewLi = (text) => {
+			const li = document.createElement('li');
+			li.classList.add('preview__rules');
+			li.textContent = text;
+
+			return li;
+		};
+
+		const previewLiOne = createPreviewLi('Разрушь 10 линий и перейди на новый уровень');
+		const previewLiTwo = createPreviewLi('На каждом уровне после первого есть препятствие');
+		const previewLiThree = createPreviewLi('Попобуй пройти все уровни')
+
 		const previewBtn = document.createElement('button');
 		previewBtn.classList.add('preview__btn');
 		previewBtn.textContent = 'Начать игру';
 
-		preview.append(previewText, previewBtn);
+		previewDescription.append(previewLiOne, previewLiTwo, previewLiThree);
+		preview.append(previewTitle, previewDescription, previewBtn);
 		this.container.append(preview);
 
 		return previewBtn;
@@ -87,10 +103,10 @@ export class View {
 		this.container.append(scoreBlock);
 
 		return (lines, score, level, record) => {
-			linesElem.textContent = `lines: ${lines}`;
-			scoreElem.textContent = `score: ${score}`;
-			levelElem.textContent = `level: ${level}`;
-			recordElem.textContent = `record: ${record}`; 
+			linesElem.textContent = `Линии: ${lines}`;
+			scoreElem.textContent = `Очки: ${score}`;
+			levelElem.textContent = `Уровень: ${level}`;
+			recordElem.textContent = `Рекорд: ${record}`; 
 		};
 	};
 
