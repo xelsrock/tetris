@@ -1,0 +1,30 @@
+.header__title {
+	color: FireBrick;
+	text-align: center;
+	margin: 20px auto 30px;
+	font-weight: 900;
+}
+
+.header__title-online {
+	color: goldenrod;
+}
+
+@media (max-width: 1700px) {
+
+}
+
+@media (max-width: 1200px) {
+
+}
+
+@media (max-width: 992px) {
+	.header__title {
+		margin-bottom: 30px;
+	}
+}
+
+@media (max-width: 740px) {
+	.header__title {
+		font-size: 30px;
+	}
+}

@@ -210,7 +210,7 @@ export class Controller {
     }`;
 
     const resetBtn = document.createElement('button');
-    resetBtn.classList.add('game__over-btn');
+    resetBtn.classList.add('game__over-btn', 'btn');
     resetBtn.textContent = 'На главную';
 
     resetBtn.addEventListener('click', (e) => {

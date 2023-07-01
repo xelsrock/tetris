@@ -43,7 +43,7 @@ export class View {
 		const previewLiThree = createPreviewLi('Попробуй пройти все уровни');
 
 		const previewBtn = document.createElement('button');
-		previewBtn.classList.add('preview__btn');
+		previewBtn.classList.add('preview__btn', 'btn');
 		previewBtn.textContent = 'Начать игру';
 
 		previewDescription.append(previewLiOne, previewLiTwo, previewLiThree);
