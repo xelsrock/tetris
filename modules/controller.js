@@ -77,6 +77,7 @@ export class Controller {
       const key = event.code;
 
       if (key === 'Space') {
+        // this.game.dropTetramino();
         pauseOperation();
       }
     });

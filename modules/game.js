@@ -106,8 +106,12 @@ export class Game {
 	};
 
 	dropTetramino() {
-
-	}
+		const down = this.area.length - this.activeTetramino;
+		console.log(this.activeTetramino.y);
+		for (let i = 0; i < 3; i++) {
+			this.moveDown();
+		}
+	};
 
 	get viewArea() {
 		const area = JSON.parse(JSON.stringify(this.area));
