@@ -105,6 +105,10 @@ export class Game {
 		};
 	};
 
+	dropTetramino() {
+
+	}
+
 	get viewArea() {
 		const area = JSON.parse(JSON.stringify(this.area));
 		const {x, y, block: tetramino} = this.activeTetramino;

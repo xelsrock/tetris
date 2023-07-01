@@ -151,6 +151,10 @@ export class View {
 		};
 	};
 
+	createPauseOpacity() {
+		this.canvas.classList.toggle('pause');
+	};
+
 	createBlockInfo() {
 		const infoBlock = document.createElement('div');
 		infoBlock.classList.add('info__block')
@@ -175,6 +179,7 @@ export class View {
 			<p>ArrowRight - вправо</p>
 			<p>ArrowDown - вниз</p>
 			<p>ArrowUp - повернуть</p>
+			<p>Space - пауза</p>
 			<h4>На смартфоне:</h4>
 			<p>Свайп влево - влево</p>
 			<p>Свайп вправо - вправо</p>
@@ -188,7 +193,9 @@ export class View {
 
 		const infoGameText = document.createElement('p');
 		infoGameText.classList.add('info__text', 'info__text_game');
-		infoGameText.textContent = 'hello';
+		infoGameText.textContent = `
+			История создания Тетриса началась в Советском Союзе в середине 1980-х годов. Основной разработчик игры — Алексей Пажитнов, молодой программист из Москвы, работавший в Научно-исследовательском центре компьютерного прикладного программирования.
+		`;
 
 		infoGame.addEventListener('click', () => {
 			infoGame.classList.toggle('active');
@@ -196,7 +203,7 @@ export class View {
 
 		const infoVersionText = document.createElement('p');
 		infoVersionText.classList.add('info__text', 'info__text_version');
-		infoVersionText.textContent = 'hello';
+		infoVersionText.textContent = '1.1.3v (07.07.2023)';
 
 		infoVersion.addEventListener('click', () => {
 			infoVersion.classList.toggle('active');
