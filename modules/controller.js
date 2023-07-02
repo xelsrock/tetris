@@ -15,6 +15,8 @@ export class Controller {
   };
   
   start() {
+    const gameArea = document.querySelector('.game__area');
+
     this.view.showArea(this.game.viewArea);
     const showScore = this.view.createBlockScore();
     const [pauseBtn, musicBtn, soundBtn] = this.view.createBlockSetting();
@@ -52,6 +54,14 @@ export class Controller {
 
     const pauseOperation = () => {
       if (this.game.pauseGame) {
+        if (this.game.level === 2) {
+          gameArea.classList.add('shaking');
+        }
+
+        if (this.game.level === 3) {
+          gameArea.classList.add('flicker');
+        }
+
 	      pauseBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="43" height="43" fill="currentColor" class="bi bi-pause-fill" viewBox="0 0 16 16"> <path d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5zm5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5z"/></svg>';
         this.game.pauseGame = false;
         this.view.createPauseOpacity();
@@ -61,6 +71,8 @@ export class Controller {
           isTickRunning = true;
         }
       } else {
+        gameArea.classList.remove('shaking');
+        gameArea.classList.remove('flicker');
         this.view.createPauseOpacity();
         pauseBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="43" height="43" fill="currentColor" class="bi bi-play-fill" viewBox="0 0 16 16"> <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/></svg>'
         this.game.pauseGame = true;
@@ -107,7 +119,6 @@ export class Controller {
     }
     
     /* Management */
-    const gameArea = document.querySelector('.game__area');
 
     let touchStart;
     let touchEnd;
@@ -128,7 +139,11 @@ export class Controller {
       if (!this.game.pauseGame) {
         if (xAbs === yAbs) {
           /*Касание*/
-          this.game.rotateTetramino();
+          if (this.game.level === 4) {
+            this.game.moveDown();
+          } else {
+            this.game.rotateTetramino();
+          }
           this.view.showArea(this.game.viewArea);
         }
 
@@ -136,17 +151,29 @@ export class Controller {
           if (xAbs > yAbs) {
             if (touchEnd.pageX < touchStart.pageX) {
               /*СВАЙП ВЛЕВО*/
-              this.game.moveLeft();
+              if (this.game.level === 4) {
+                this.game.moveRight();
+              } else {
+                this.game.moveLeft();
+              }
               this.view.showArea(this.game.viewArea);
             } else {
               /*СВАЙП ВПРАВО*/
-              this.game.moveRight();
+              if (this.game.level === 4) {
+                this.game.moveLeft();
+              } else {
+                this.game.moveRight();
+              }
               this.view.showArea(this.game.viewArea);
             }
           } else {
             if (touchEnd.pageY > touchStart.pageY) {
               /*СВАЙП ВНИЗ*/
-              this.game.moveDown();
+              if (this.game.level === 4) {
+                this.game.rotateTetramino();
+              } else {
+                this.game.moveDown();
+              }
               this.view.showArea(this.game.viewArea);
             } else {
               /*СВАЙП ВВЕРХ*/
@@ -159,23 +186,39 @@ export class Controller {
     window.addEventListener('keydown', (event) => {
       const key = event.code;
       event.preventDefault();
-
+      
       if (!this.game.pauseGame) {
         switch(key) {
           case 'ArrowLeft':
-            this.game.moveLeft();
+            if (this.game.level === 4) {
+              this.game.moveRight();
+            } else {
+              this.game.moveLeft();
+            }
             this.view.showArea(this.game.viewArea);
           break;
           case 'ArrowRight':
-            this.game.moveRight();
+            if (this.game.level === 4) {
+              this.game.moveLeft();
+            } else {
+              this.game.moveRight();
+            }
             this.view.showArea(this.game.viewArea);
           break;
           case 'ArrowDown':
-              this.game.moveDown();
+              if (this.game.level === 4) {
+                this.game.rotateTetramino();
+              } else {
+                this.game.moveDown();
+              }
               this.view.showArea(this.game.viewArea);
           break;
           case 'ArrowUp':
-              this.game.rotateTetramino();
+              if (this.game.level === 4) {
+                this.game.moveDown();
+              } else {
+                this.game.rotateTetramino();
+              }
               this.view.showArea(this.game.viewArea);
           break;
         };
@@ -184,7 +227,11 @@ export class Controller {
   };
 
   gameEnd() {
+    const gameArea = document.querySelector('.game__area');
+
     this.game.musicStop();
+    gameArea.classList.remove('shaking');
+    gameArea.classList.remove('flicker');
 
     const gameOverMusic = new Audio('audio/gameOver.mp3');
 

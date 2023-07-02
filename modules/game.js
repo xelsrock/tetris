@@ -36,7 +36,7 @@ export class Game {
 		['o','o','o','o','o','o','o','o','o','o',],
 		['o','o','o','o','o','o','o','o','o','o',],
 	];
-
+	
 	activeTetramino = this.createTetromine();
 
 	nextTetramino = this.createTetromine();
@@ -210,9 +210,23 @@ export class Game {
 	};
 
 	calcScore(lines) {
+		const gameArea = document.querySelector('.game__area');
+
 		this.score += this.points[lines];
 		this.lines += lines;
 		this.level = Math.floor(this.lines / 10) + 1;
+
+		if (this.level === 2 && !this.pauseGame) {
+			gameArea.classList.add('shaking');
+		} else {
+			gameArea.classList.remove('shaking');
+		}
+
+		if (this.level === 3 && !this.pauseGame) {
+			gameArea.classList.add('flicker');
+		} else {
+			gameArea.classList.remove('flicker');
+		}
 
 		if (this.score > this.record) {
 			this.record = this.score;

@@ -62,6 +62,31 @@ export class View {
 		this.canvas.height = SIZE_BLOCK * ROWS;
 	};
 
+	createTextObstacle(text) {
+		const textObstacle = document.createElement('p');
+		textObstacle.classList.add('header__obstacle');
+		textObstacle.textContent = text;
+		this.container.before(textObstacle);
+
+		/* switch (this.game.level) {
+			case 1:
+				this.view.createTextObstacle('Классический тетрис');
+				break;
+			case 2:
+				this.view.createTextObstacle('Землетрясение');
+				break;
+			case 3:
+				this.view.createTextObstacle('Проблемы с электричиством');
+				break;
+			case 3:
+			this.view.createTextObstacle('Неисправный пульт управления');
+			break;
+			default:
+				this.view.createTextObstacle('Классический тетрис');
+				break;
+		} */
+	};
+
 	createBlockSetting() {
 		const settingBlock = document.createElement('div');
 		settingBlock.classList.add('setting__block');
