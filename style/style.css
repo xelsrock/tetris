@@ -17,7 +17,7 @@ body {
 
 .container {
 	width: 100%;
-	max-width: 700px;
+	max-width: 500px;
 	display: grid;
 	gap: 50px;
 	align-items: flex-start;
@@ -26,6 +26,37 @@ body {
 	'game next'
 	'game score';
 	margin: 0 auto;
+	margin-bottom: 30px;
+}
+
+.score__block {
+	border: 2px solid black;
+	font-size: 18px;
+	padding: 20px;
+	grid-area: score;
+	max-width: 200px;
+}
+
+.score__block-text {
+	margin-top: 0;
+}
+
+.score__block-text:last-child {
+	margin-bottom: 0;
+}
+
+.next__block {
+	border: 2px solid black;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 10px;
+	grid-area: next;
+}	
+
+.canvas__tetro {
+	max-width: 90px;
+	max-height: 90px;
 }
 
 .btn {
@@ -44,29 +75,38 @@ body {
 	background-color: rgb(224, 191, 2);
 }
 
-@media (max-width: 1700px) {
-
-}
-
 @media (max-width: 1200px) {
-
-}
-
-@media (max-width: 992px) {
 	.container {
-		max-width: 700px;
+		gap: 80px;
 	}
-}
 
-@media (max-width: 740px) {
-	.container {
-		max-width: 600px;
+	.score__block {
+		font-size: 16px;
 	}
 }
 
 @media (max-width: 540px) {
 	.container {
-		max-width: 350px;
+		padding: 10px;
+		gap: 25px;
+		max-width: 400px;
+	}
+
+	.score__block {
+		border-width: 1px;
+		padding: 10px;
+		font-size: 14px;
+	}
+
+	.next__block {
+		width: 70px;
+		height: 70px;
+		border-width: 1px;
+	}
+
+	.canvas__tetro {
+		max-width: 70px;
+		max-height: 70px;
 	}
 
 	.btn {

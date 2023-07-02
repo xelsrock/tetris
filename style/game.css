@@ -1,4 +1,4 @@
-.game-area {
+.game__area {
 	width: 100%;
 	max-width: 500px;
 	position: relative;
@@ -6,10 +6,13 @@
 	display: block;
 	background-color: rgba(222, 222, 222, 0.5);
 	transition: opacity .1s linear;
+}
+
+.game__area.anim {
 	/* animation: blackout linear 3s infinite, twitch linear .1s infinite; */
 }
 
-.game-area.pause {
+.game__area.pause {
 	opacity: 0.5;
 }
 
@@ -23,7 +26,7 @@
 }
 
 .game__over {
-	width: 500px;
+	max-width: 500px;
 	padding: 20px;
 	text-align: center;
   border-radius: 5px;
@@ -38,11 +41,8 @@
 }
 
 .game__over-result {
+	margin-top: 0;
 	font-size: 18px;
-}
-
-.game__over-btn {
-
 }
 
 @keyframes blackout {
@@ -54,5 +54,26 @@
 @keyframes twitch {
 	50% {
 		transform: translateX(10px);
+	}
+}
+
+@media (max-width: 992px) {
+	.game__over-text {
+		margin: 15px 0;
+	}
+}
+
+@media (max-width: 540px) {
+	.game__over-mask {
+		padding: 20px;
+	}
+
+	.game__over-text {
+		margin: 10px 0;
+		font-size: 22px;
+	}
+
+	.game__over-result {
+		font-size: 16px;
 	}
 }

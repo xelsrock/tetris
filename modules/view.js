@@ -56,7 +56,7 @@ export class View {
 	init() {
 		this.container.textContent = '';
 		this.canvas.style.gridArea = 'game';
-		this.canvas.classList.add('game-area');
+		this.canvas.classList.add('game__area');
 		this.container.append(this.canvas);
 		this.canvas.width = SIZE_BLOCK * COLLUMNS;
 		this.canvas.height = SIZE_BLOCK * ROWS;
@@ -86,17 +86,20 @@ export class View {
 
 	createBlockScore() {
 		const scoreBlock = document.createElement('div');
-		scoreBlock.style.cssText = `
-			border: 2px solid black;
-			font-size: 18px;
-			padding: 20px;
-			grid-area: score;
-		`;
+		scoreBlock.classList.add('score__block');
 
 		const linesElem = document.createElement('p');
+		linesElem.classList.add('score__block-text');
+
 		const scoreElem = document.createElement('p');
+		scoreElem.classList.add('score__block-text');
+
 		const levelElem = document.createElement('p');
+		levelElem.classList.add('score__block-text');
+
 		const recordElem = document.createElement('p');
+		recordElem.classList.add('score__block-text');
+
 
 		scoreBlock.append(linesElem, scoreElem, levelElem, recordElem);
 
@@ -115,15 +118,12 @@ export class View {
 		tetraminoBlock.style.cssText = `
 			width: ${SIZE_BLOCK * 4}px;
 			height: ${SIZE_BLOCK * 4}px;
-			border: 2px solid black;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			padding: 10px;
-			grid-area: next;
 		`;
+		tetraminoBlock.classList.add('next__block');
 
 		const canvas = document.createElement('canvas');
+		canvas.classList.add('canvas__tetro');
+		
 		const context = canvas.getContext('2d');
 		tetraminoBlock.append(canvas);
 

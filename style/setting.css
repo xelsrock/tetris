@@ -1,4 +1,5 @@
 .setting__block {
+	max-width: 200px;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -13,8 +14,17 @@
 	color:  lightseagreen;
 	background-color: transparent;
 	cursor: pointer;
+	outline: none;
 }
 
 .setting__sound:hover, .setting__music:hover, .setting__pause:hover  {
 	color:  rgb(27, 149, 143);
+}
+
+@media (max-width: 540px) {
+	.setting__block {
+		flex-direction: column;
+		gap: 10px;
+		align-items: flex-start;
+	}
 }

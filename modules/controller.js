@@ -107,7 +107,7 @@ export class Controller {
     }
     
     /* Management */
-    const gameArea = document.querySelector('.game-area');
+    const gameArea = document.querySelector('.game__area');
 
     let touchStart;
     let touchEnd;

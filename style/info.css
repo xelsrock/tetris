@@ -1,11 +1,11 @@
 .info__block {
 	display: flex;
-	max-width: 250px;
+	max-width: 240px;
 	flex-direction: column;
 	gap: 15px;
 	font-size: 18px;
 	position: absolute;
-	left: 20%;
+	left: 300px;
 }
 
 .info__control, .info__game, .info__version {
@@ -22,16 +22,8 @@
 	font-size: 16px;
 }
 
-.info__text_control {
-	
-}
-
 .info__text_game {
 	line-height: 1.5;
-}
-
-.info__text_version {
-
 }
 
 .info__control.active .info__text_control {
@@ -48,22 +40,20 @@
 
 @media (max-width: 1700px) {
 	.info__block {
-		left: 15%;
+		left: 50px;
+		max-width: 230px;
 	}
 }
 
 @media (max-width: 1200px) {
 	.info__block {
-		left: 10%;
+		position: relative;
+		left: 0;
 	}
 }
 
-@media (max-width: 992px) {
+@media (max-width: 540px) {
 	.info__block {
-		
+		margin-top: 20px;
 	}
-}
-
-@media (max-width: 740px) {
-
 }

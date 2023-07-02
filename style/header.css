@@ -9,17 +9,9 @@
 	color: goldenrod;
 }
 
-@media (max-width: 1700px) {
-
-}
-
-@media (max-width: 1200px) {
-
-}
-
 @media (max-width: 992px) {
 	.header__title {
-		margin-bottom: 30px;
+		margin-bottom: 20px;
 	}
 }
 
