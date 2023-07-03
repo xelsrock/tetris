@@ -8,13 +8,13 @@
 	left: 300px;
 }
 
-.info__control, .info__game, .info__version {
+.info__control, .info__rules, .info__game, .info__version {
 	color: #302d2d;
 	font-weight: 600;
 	cursor: pointer;
 }
 
-.info__text_control, .info__text_game, .info__text_version {
+.info__text_control, .info__text_rules, .info__text_game, .info__text_version {
 	font-weight: 400;
 	display: none;
 	margin-bottom: 0;
@@ -27,6 +27,10 @@
 }
 
 .info__control.active .info__text_control {
+	display: block;
+}
+
+.info__rules.active .info__text_rules {
 	display: block;
 }
 

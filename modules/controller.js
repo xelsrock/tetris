@@ -21,7 +21,8 @@ export class Controller {
     const showScore = this.view.createBlockScore();
     const [pauseBtn, musicBtn, soundBtn] = this.view.createBlockSetting();
     const showNextTetramino = this.view.createBlockNextTetramino();
-    this.game.createUpdatePanels(showScore, showNextTetramino);
+    const showTextObstacle = this.view.createTextObstacle();
+    this.game.createUpdatePanels(showScore, showNextTetramino, showTextObstacle);
     this.view.createBlockInfo();
     
     musicBtn.addEventListener('click', (e) => {
@@ -82,7 +83,7 @@ export class Controller {
     pauseBtn.addEventListener('click', (e) => {
       e.preventDefault();
       pauseOperation();
-    });
+    }); 
 
     window.addEventListener('keydown', (event) => {
       event.preventDefault();
@@ -189,7 +190,7 @@ export class Controller {
       
       if (!this.game.pauseGame) {
         switch(key) {
-          case 'ArrowLeft':
+          case 'ArrowLeft': case 'KeyA':
             if (this.game.level === 4) {
               this.game.moveRight();
             } else {
@@ -197,7 +198,7 @@ export class Controller {
             }
             this.view.showArea(this.game.viewArea);
           break;
-          case 'ArrowRight':
+          case 'ArrowRight': case 'KeyD':
             if (this.game.level === 4) {
               this.game.moveLeft();
             } else {
@@ -205,7 +206,7 @@ export class Controller {
             }
             this.view.showArea(this.game.viewArea);
           break;
-          case 'ArrowDown':
+          case 'ArrowDown': case 'KeyS':
               if (this.game.level === 4) {
                 this.game.rotateTetramino();
               } else {
@@ -213,7 +214,7 @@ export class Controller {
               }
               this.view.showArea(this.game.viewArea);
           break;
-          case 'ArrowUp':
+          case 'ArrowUp': case 'KeyW':
               if (this.game.level === 4) {
                 this.game.moveDown();
               } else {

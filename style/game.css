@@ -12,7 +12,7 @@
 }
 
 .game__area.flicker {	
-	animation: flicker linear 3s infinite;
+	animation: flicker linear 2s infinite;
 }
 
 .game__area.pause {

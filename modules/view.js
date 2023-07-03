@@ -25,7 +25,7 @@ export class View {
 
 		const previewTitle = document.createElement('h3');
 		previewTitle.classList.add('preview__title');
-		previewTitle.textContent = 'А что если в классический тетрис добавить немного препятствий?';
+		previewTitle.textContent = 'А что если в классический тетрис добавить немного помех?';
 		
 		const previewDescription = document.createElement('ul');
 		previewDescription.classList.add('preview__description');
@@ -39,8 +39,8 @@ export class View {
 		};
 
 		const previewLiOne = createPreviewLi('Разрушь 10 линий и перейди на новый уровень');
-		const previewLiTwo = createPreviewLi('На каждом уровне после первого есть препятствие');
-		const previewLiThree = createPreviewLi('Попробуй пройти все уровни');
+		const previewLiTwo = createPreviewLi('На каждом уровне после первого есть помеха');
+		const previewLiThree = createPreviewLi('Попробуй пройти как можно больше уровней');
 
 		const previewBtn = document.createElement('button');
 		previewBtn.classList.add('preview__btn', 'btn');
@@ -62,29 +62,13 @@ export class View {
 		this.canvas.height = SIZE_BLOCK * ROWS;
 	};
 
-	createTextObstacle(text) {
+	createTextObstacle() {
 		const textObstacle = document.createElement('p');
 		textObstacle.classList.add('header__obstacle');
-		textObstacle.textContent = text;
+		textObstacle.textContent = 'Без помех';
 		this.container.before(textObstacle);
 
-		/* switch (this.game.level) {
-			case 1:
-				this.view.createTextObstacle('Классический тетрис');
-				break;
-			case 2:
-				this.view.createTextObstacle('Землетрясение');
-				break;
-			case 3:
-				this.view.createTextObstacle('Проблемы с электричиством');
-				break;
-			case 3:
-			this.view.createTextObstacle('Неисправный пульт управления');
-			break;
-			default:
-				this.view.createTextObstacle('Классический тетрис');
-				break;
-		} */
+		return textObstacle;
 	};
 
 	createBlockSetting() {
@@ -188,6 +172,10 @@ export class View {
 		infoControl.classList.add('info__control');
 		infoControl.textContent = 'Управление';
 
+		const infoRules = document.createElement('a');
+		infoRules.classList.add('info__rules');
+		infoRules.textContent = 'Правила игры';
+
 		const infoGame = document.createElement('a');
 		infoGame.classList.add('info__game');
 		infoGame.textContent = 'О игре';
@@ -200,10 +188,10 @@ export class View {
 		infoControlText.classList.add('info__text', 'info__text_control');
 		infoControlText.innerHTML = `
 			<h4>На ПК:</h4>
-			<p>ArrowLeft - влево</p>
-			<p>ArrowRight - вправо</p>
-			<p>ArrowDown - вниз</p>
-			<p>ArrowUp - повернуть</p>
+			<p>ArrowLeft / A - влево</p>
+			<p>ArrowRight / D - вправо</p>
+			<p>ArrowDown / S - вниз</p>
+			<p>ArrowUp / W - повернуть</p>
 			<p>Space - пауза</p>
 			<h4>На смартфоне:</h4>
 			<p>Свайп влево - влево</p>
@@ -214,6 +202,19 @@ export class View {
 
 		infoControl.addEventListener('click', () => {
 			infoControl.classList.toggle('active');
+		});
+
+		const infoRulesText = document.createElement('p');
+		infoRulesText.classList.add('info_text', 'info__text_rules');
+		infoRulesText.textContent = `
+			Каждые 10 разрушенных линий повышают уровень.
+			На каждом уровне после первого есть помеха, которая с каждым последующим уровнем становится сложнее.
+			Игра считается пройденной по достижении 6 уровня.
+			Попробуй пройти как можно больше уровней.
+		`;
+
+		infoRules.addEventListener('click', () => {
+			infoRules.classList.toggle('active');
 		});
 
 		const infoGameText = document.createElement('p');
@@ -235,10 +236,11 @@ export class View {
 		});
 
 		infoControl.append(infoControlText);
+		infoRules.append(infoRulesText);
 		infoGame.append(infoGameText);
 		infoVersion.append(infoVersionText);
 
-		infoBlock.append(infoControl, infoGame, infoVersion);
+		infoBlock.append(infoControl, infoRules, infoGame, infoVersion);
 		this.container.append(infoBlock);
 	};
 

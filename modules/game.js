@@ -234,13 +234,31 @@ export class Game {
 		};
 	};
 
-	createUpdatePanels(showScore, showNextTetramino) {
+	createUpdatePanels(showScore, showNextTetramino, showTextObstacle) {
 		showScore(this.lines, this.score, this.level, this.record);
-		showNextTetramino(this.nextTetramino.block);
+		showNextTetramino(this.nextTetramino.block);	
 
 		this.updatePanels = () => {
 			showScore(this.lines, this.score, this.level, this.record);
 			showNextTetramino(this.nextTetramino.block);
+
+			switch (this.level) {
+				case 2:
+					showTextObstacle.textContent = 'Землетрясение';
+					break;
+				case 3:
+					showTextObstacle.textContent = 'Проблемы с электричеством';
+					break;
+				case 4:
+					showTextObstacle.textContent = 'Неисправный пульт управления';
+					break;
+				case 5:
+					showTextObstacle.textContent = 'Камнепад';
+					break;
+				default:
+					showTextObstacle.textContent = 'Без помех';
+					break;
+			};
 		};
 	};
 };
