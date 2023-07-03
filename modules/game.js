@@ -126,17 +126,19 @@ export class Game {
 	};
 
 	createDroppingTetramino() {
-		let random = Math.random();
-		if (this.lines >= 40 && this.lines <= 46) {
-			random > 0.9 ? random = 1 : random = 0;
-		}
-		
-		if (this.lines > 46 && this.lines < 50) {
-			random > 0.8 ? random = 1 : random = 0;
-		}
+		if (this.level === 5) {
+			let random = Math.random();
+			if (this.lines >= 40 && this.lines <= 46) {
+				random > 0.9 ? random = 1 : random = 0;
+			}
+			
+			if (this.lines > 46 && this.lines < 50) {
+				random > 0.8 ? random = 1 : random = 0;
+			}
 
-		if (random) {
-			this.dropTetramino();
+			if (random) {
+				this.dropTetramino();
+			}
 		}
 	}
 
@@ -228,7 +230,7 @@ export class Game {
 		this.score += this.points[lines];
 		this.lines += lines;
 		this.level = Math.floor(this.lines / 10) + 1;
-
+		
 		if (this.level === 2 && !this.pauseGame) {
 			gameArea.classList.add('shaking');
 		} else {
