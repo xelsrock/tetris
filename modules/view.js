@@ -187,17 +187,17 @@ export class View {
 		const infoControlText = document.createElement('p');
 		infoControlText.classList.add('info__text', 'info__text_control');
 		infoControlText.innerHTML = `
-			<h4>На ПК:</h4>
+			<h4 class="info__title-control">На ПК:</h4>
 			<p>ArrowLeft / A - влево</p>
 			<p>ArrowRight / D - вправо</p>
 			<p>ArrowDown / S - вниз</p>
-			<p>ArrowUp / W - повернуть</p>
+			<p>ArrowUp / W - вращать</p>
 			<p>Space - пауза</p>
-			<h4>На смартфоне:</h4>
+			<h4 class="info__title-control">На смартфоне:</h4>
 			<p>Свайп влево - влево</p>
 			<p>Свайп вправо - вправо</p>
 			<p>Свайп вниз - вниз</p>
-			<p>Касание - повернуть</p>
+			<p>Касание - вращать</p>
 		`;
 
 		infoControl.addEventListener('click', () => {
@@ -229,7 +229,12 @@ export class View {
 
 		const infoVersionText = document.createElement('p');
 		infoVersionText.classList.add('info__text', 'info__text_version');
-		infoVersionText.textContent = '1.1.3v (07.07.2023)';
+		infoVersionText.innerHTML = `
+			<p>1.1.3v (07.07.2023)</p>
+			<p class="info__developer">Связь с разработчиком: 
+				<a class="info__email" href="mailto:xelsrock@gmail.com">xelsrock@gmail.com</a>
+			</p>
+		`;
 
 		infoVersion.addEventListener('click', () => {
 			infoVersion.classList.toggle('active');

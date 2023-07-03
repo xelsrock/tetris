@@ -252,9 +252,11 @@ export class Controller {
 
     const gameOverResult = document.createElement('p');
     gameOverResult.classList.add('game__over-result');
-    gameOverResult.textContent = `${this.game.score >= this.game.record
-      ? `Вы побили свой прежний рекорд и набрали: ${this.game.score} очков`
-      : `Что-то пошло не так... Всего ${this.game.score} очков`
+    gameOverResult.textContent = `${this.game.level > 5
+      ? `
+        Ура, победа! Вы прошли все уровни с помехами и достигли ${this.game.level} уровня
+      `
+      : `Что-то пошло не так... Вы дошли до ${this.game.level} уровня`
     }`;
 
     const resetBtn = document.createElement('button');

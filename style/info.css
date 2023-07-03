@@ -3,9 +3,18 @@
 	max-width: 240px;
 	flex-direction: column;
 	gap: 15px;
+	line-height: 1.5;
 	font-size: 18px;
 	position: absolute;
 	left: 300px;
+}
+
+.info__title-control {
+	margin: 15px 0;
+}
+
+.info__email:hover {
+	text-decoration: underline;
 }
 
 .info__control, .info__rules, .info__game, .info__version {
@@ -53,11 +62,16 @@
 	.info__block {
 		position: relative;
 		left: 0;
+		max-width: 300px;
 	}
 }
 
 @media (max-width: 540px) {
 	.info__block {
 		margin-top: 20px;
+	}	
+
+	.info__title-control {
+		margin: -5px 0;
 	}
 }
