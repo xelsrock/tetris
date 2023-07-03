@@ -63,7 +63,7 @@ export class Game {
 	changeTetramino() {
 		this.activeTetramino = this.nextTetramino;
 		this.nextTetramino = this.createTetromine();
-	}
+	};
 
 	moveLeft() {
 		if (this.checkOutPosition(this.activeTetramino.x - 1, this.activeTetramino.y)) {
@@ -124,6 +124,21 @@ export class Game {
 			this.moveDown();
 		}
 	};
+
+	createDroppingTetramino() {
+		let random = Math.random();
+		if (this.lines >= 40 && this.lines <= 46) {
+			random > 0.9 ? random = 1 : random = 0;
+		}
+		
+		if (this.lines > 46 && this.lines < 50) {
+			random > 0.8 ? random = 1 : random = 0;
+		}
+
+		if (random) {
+			this.dropTetramino();
+		}
+	}
 
 	checkOutPosition(x, y) {
 		const tetramino = this.activeTetramino.block;
