@@ -192,11 +192,11 @@ export class View {
 			<p>ArrowRight / D - вправо</p>
 			<p>ArrowDown / S - вниз</p>
 			<p>ArrowUp / W - вращать</p>
-			<p>Space - пауза</p>
+			<p>Space - уронить</p>
 			<h4 class="info__title-control">На смартфоне:</h4>
 			<p>Свайп влево - влево</p>
 			<p>Свайп вправо - вправо</p>
-			<p>Свайп вниз - вниз</p>
+			<p>Свайп вниз - уронить</p>
 			<p>Касание - вращать</p>
 		`;
 

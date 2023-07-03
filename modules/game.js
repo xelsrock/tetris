@@ -105,14 +105,6 @@ export class Game {
 		};
 	};
 
-	dropTetramino() {
-		const down = this.area.length - this.activeTetramino;
-		console.log(this.activeTetramino.y);
-		for (let i = 0; i < 3; i++) {
-			this.moveDown();
-		}
-	};
-
 	get viewArea() {
 		const area = JSON.parse(JSON.stringify(this.area));
 		const {x, y, block: tetramino} = this.activeTetramino;
@@ -127,9 +119,15 @@ export class Game {
 		return area;
 	};
 
+	dropTetramino() {
+		for (let i = 0; i < this.activeTetramino.y; i++) {
+			this.moveDown();
+		}
+	};
+
 	checkOutPosition(x, y) {
 		const tetramino = this.activeTetramino.block;
-		
+
 		for (let i = 0; i < tetramino.length; i++) {
 			for (let j  = 0; j < tetramino[i].length; j++) {
 				if (tetramino[i][j] === 'o') continue;
@@ -139,7 +137,7 @@ export class Game {
 						return false;
 				};
 			};
-		};	
+		};
 		return true;
 	};
 

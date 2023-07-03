@@ -85,16 +85,6 @@ export class Controller {
       pauseOperation();
     }); 
 
-    window.addEventListener('keydown', (event) => {
-      event.preventDefault();
-      const key = event.code;
-
-      if (key === 'Space') {
-        // this.game.dropTetramino();
-        pauseOperation();
-      }
-    });
-
     const tick = () => {
       const time = (1100 - 100 * this.game.level);
 
@@ -141,7 +131,7 @@ export class Controller {
         if (xAbs === yAbs) {
           /*Касание*/
           if (this.game.level === 4) {
-            this.game.moveDown();
+            this.game.dropTetramino();
           } else {
             this.game.rotateTetramino();
           }
@@ -173,7 +163,7 @@ export class Controller {
               if (this.game.level === 4) {
                 this.game.rotateTetramino();
               } else {
-                this.game.moveDown();
+                this.game.dropTetramino();
               }
               this.view.showArea(this.game.viewArea);
             } else {
@@ -220,6 +210,10 @@ export class Controller {
               } else {
                 this.game.rotateTetramino();
               }
+              this.view.showArea(this.game.viewArea);
+          break;
+          case 'Space':
+              this.game.dropTetramino();
               this.view.showArea(this.game.viewArea);
           break;
         };
