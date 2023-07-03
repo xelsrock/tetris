@@ -230,7 +230,7 @@ export class View {
 		const infoVersionText = document.createElement('p');
 		infoVersionText.classList.add('info__text', 'info__text_version');
 		infoVersionText.innerHTML = `
-			<p>1.1.3v (07.07.2023)</p>
+			<p>1.1.3v (03.07.2023)</p>
 			<p class="info__developer">Связь с разработчиком: 
 				<a class="info__email" href="mailto:xelsrock@gmail.com">xelsrock@gmail.com</a>
 			</p>
