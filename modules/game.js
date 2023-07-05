@@ -12,7 +12,7 @@ export class Game {
 	gameOver = false;
 	pauseGame = false;
 	musicPause = true;
-	sound = true;
+	sound = false;
 
 	area = [
 		['o','o','o','o','o','o','o','o','o','o',],
@@ -128,14 +128,9 @@ export class Game {
 	createDroppingTetramino() {
 		if (this.level === 5) {
 			let random = Math.random();
-			if (this.lines >= 40 && this.lines <= 46) {
-				random > 0.9 ? random = 1 : random = 0;
-			}
 			
-			if (this.lines > 46 && this.lines < 50) {
-				random > 0.8 ? random = 1 : random = 0;
-			}
-
+			random > 0.95 ? random = 1 : random = 0;
+			
 			if (random) {
 				this.dropTetramino();
 			}

@@ -25,16 +25,6 @@ export class Controller {
     this.game.createUpdatePanels(showScore, showNextTetramino, showTextObstacle);
     this.view.createBlockInfo();
 
-    // setTimeout(() => {
-    //   const gen = this.game.createDroppingTetramino();
-    //   for (let i = 0; i < 2; i++) {
-    //     gen.next();
-    //     setTimeout(() => {
-    //       gen.next();
-    //     }, 5000);
-    //   }
-    // }, 2000);
-
     musicBtn.addEventListener('click', (e) => {
       e.preventDefault();
       
